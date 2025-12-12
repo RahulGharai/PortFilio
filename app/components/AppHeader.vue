@@ -5,19 +5,19 @@ const route = useRoute()
 
 const items = computed<NavigationMenuItem[]>(() => [{
   label: 'Home',
-  icon: 'i-simple-icons-figma',
+  // icon: 'i-lucide-house',
   to: '/home'
 }, {
   label: 'Project',
-  icon: 'i-lucide-rocket',
+  // icon: 'i-lucide-house',
     to: '/project'
 }, {
   label: 'Blog',
-  icon: 'i-lucide-rocket',
+  // icon: 'i-lucide-rocket',
   to: '/blog'
 }, {
   label: 'About',
-  icon: 'i-lucide-rocket',
+  // icon: 'i-lucide-rocket',
   to: '/about'
 }])
 </script>

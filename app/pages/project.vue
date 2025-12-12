@@ -1,90 +1,162 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref } from "vue";
+import { collection, getDocs } from "firebase/firestore";
 
-const projects = ref([
-  {
-    title: 'Bloom Finance App Redesign',
-    description:
-      'Led the complete UX/UI overhaul and front-end implementation for a personal finance platform, focusing on data visualization clarity and improving user onboarding flow. Resulted in a 32% increase in user retention.',
-    image:
-      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-    url: '#',
-    tags: ['UX Design', 'UI Design'],
-    date: '2024'
-  },
-  {
-    title: 'EcoTrack Sustainability App',
-    description:
-      'Created a mobile-first application to help users track and reduce their environmental impact. Translated complex sustainability metrics into an accessible and motivating user interface.',
-    image:
-      'https://images.unsplash.com/photo-1613858749733-3a3e456e3d9e?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    url: '#',
-    tags: ['UX Research', 'UI Design', 'Mobile App'],
-    date: '2023'
-  },
-  {
-    title: 'Internal Developer Hub (Nuxt Team)',
-    description:
-      'Designed and built key components for an internal documentation and tooling hub for Nuxt developers, focusing on improving developer experience and streamlining access to resources.',
-    image:
-      'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-    url: '#',
-    tags: ['Developer Tools', 'UX Design', 'Nuxt', 'Design System', 'Internal Tools'],
-    date: '2024'
-  },
-  {
-    title: 'Wavelength Music Streaming Service',
-    description:
-      'Designed and developed the user interface for an indie music streaming service, focusing on discovery features and creating a unique, engaging listening experience using custom audio visualizations.',
-    image:
-      'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-    url: '#',
-    tags: ['UI Design', 'Front-End Dev', 'Animation'],
-    date: '2023'
+const { $firestore } = useNuxtApp();
+
+// Firestore collection result
+const showData = ref<any>([]);
+
+// Final visible projects (after filtering from Firestore)
+const visibleProjects = ref<any>([]);
+
+// Step 1: Firestore fetch
+onMounted(async () => {
+  try {
+    const colRef = collection($firestore, "showdata");
+    const snap = await getDocs(colRef);
+
+    showData.value = snap.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+
+    console.log("Firestore showdata:", showData.value);
+
+    generateVisibleProjects();
+  } catch (error) {
+    console.error("Error fetching showdata:", error);
   }
-])
+});
 
+// Step 2: ALL PROJECTS
+const allProjects = [
+  {
+    key: "AdminDashboard",
+    title: "Admin Dashboard",
+    description:
+      "A feature-rich admin dashboard for managing user data, viewing stock info, sending emails, and enabling chat between logged-in users. It includes an image gallery with likes and comments, Firebase authentication, and Firestore-based data handling.",
+    image: Object.values(
+      import.meta.glob("~/assets/images/admindashboard/dashboard.png", {
+        eager: true,
+        import: "default",
+      })
+    ),
+    url: "/projectdetails?app=admindashboard",
+    date: "2026",
+  },
+  {
+    key: "Authenticator",
+    title: "Authenticator",
+    description:
+      "A multi-authentication app supporting email login, verification links, social logins, and secure password resets. It tracks user login activity including IP, location, and device details, offering a complete authentication and security experience.",
+       image: Object.values(
+      import.meta.glob("~/assets/images/authenticator/dashboard.png", {
+        eager: true,
+        import: "default",
+      })
+    ),
+    url: "/projectdetails?app=authenticator",
+    date: "2025",
+  },
+  {
+    key: "CommectMe",
+    title: "Connect Me",
+    description:
+      "A real-time communication app where users can chat after secure email login and verification. It supports profile updates, message syncing through Firestore, and push notifications, enabling fast and interactive conversations between authenticated users.",
+       image: Object.values(
+      import.meta.glob("~/assets/images/connectme/dashboard.png", {
+        eager: true,
+        import: "default",
+      })
+    ),
+    url: "/projectdetails?app=connectme",
+    date: "2025",
+  },
+  {
+    key: "Encryptor",
+    title: "Encryptor",
+    description:
+      "Encryptor is a Nuxt 2 and Vue 2 app using Firebase where users securely save data with AES-256 encryption. Data is encrypted locally using a user-defined key and stored safely in Firestore. It includes email/password login, email verification, password reset, and encrypted notes support.",
+    image: Object.values(
+      import.meta.glob("~/assets/images/encryptor/dashboard.png", {
+        eager: true,
+        import: "default",
+      })
+    ),
+    url: "/projectdetails?app=encryptor",
+    date: "2024",
+  },
+
+  {
+    key: "ExpenseTracker",
+    title: "Expense Tracker",
+    description:
+      "Expense Tracker is a Nuxt 2 and Vue 2 app using Firebase where users track daily, monthly, and yearly expenses. Google login provides quick access, while Firestore stores all expense records. Users can add categories, view summaries, update entries, and monitor spending with simple, clear financial insights.",
+    image: Object.values(
+      import.meta.glob("~/assets/images/moneyfy/list.png", {
+        eager: true,
+        import: "default",
+      })
+    ),
+    url: "/projectdetails?app=expensetracker",
+    date: "2023",
+  },
+
+  {
+    key: "MyDesk",
+    title: "My Desk",
+    description:
+      "MyDesk is a Vue 2 app using Firebase that provides a personal dashboard with real-time weather, location details, news, bookmarks, credentials, and a rich-text notepad. Users log in via email and password, manage secure data, edit notes, and download them, making daily tasks easier and organized.",
+    image: Object.values(
+      import.meta.glob("~/assets/images/mydesk/account.png", {
+        eager: true,
+        import: "default",
+      })
+    ),
+    url: "/projectdetails?app=mydesk",
+    date: "2023",
+  },
+];
+
+// Step 3 — FILTER PROJECTS BASED ON FIRESTORE VALUES
+function generateVisibleProjects() {
+  if (!showData.value.length) return;
+
+  const flags = showData.value[0]; // Example:
+  // { Encryptor: true, ExpenseTracker: true, MyDesk: true, ... }
+
+  visibleProjects.value = allProjects.filter((p) => flags[p.key] === true);
+
+  console.log("Visible Projects:", visibleProjects.value);
+}
+
+// Page static content
 const page = ref({
-  title: 'Designing Interfaces, Building Experiences.',
+  title: "Designing Interfaces, Building Webapplication.",
   description:
-    "I've worked on a variety of projects, focusing on creating intuitive digital experiences where thoughtful design meets clean code. Here are some highlights I'm proud of, showcasing my process from concept to execution.",
-  links: [
-    { label: "Let's talk", color: 'neutral' },
-    { label: 'Email me' }
-  ]
-})
+    // "I've worked on a variety of projects, focusing on creating intuitive digital experiences where thoughtful design meets clean code. Here are some highlights I'm proud of, showcasing my process from concept to execution.",
+    "I've worked on as Full Stack Developer passionate about building modern, scalable, and user-friendly web applications",
+  links: [{ label: "Let's talk", color: "neutral" }, { label: "Email me" }],
+});
 </script>
 
 <template>
   <UPage>
-
     <UPageHero
       :title="page.title"
       :description="page.description"
-
       :ui="{
         title: '!mx-0 text-left',
         description: '!mx-0 text-left',
-        links: 'justify-start'
+        links: 'justify-start',
       }"
-    >
-      <template #links>
-        <div
-          v-if="page.links"
-          class="flex items-center"
-        >
-           <!-- <UButton color="neutral">Lets Talk</UButton>
-            <UButton>Email Me</UButton> -->
-        </div>
-      </template>
-    </UPageHero>
+    />
 
-<!-- <USeparator  label="Projects" size="lg"/> -->
-
-
+    <!-- PROJECT LIST BASED ON FIRESTORE -->
     <UPageSection :ui="{ container: '!pt-0' }">
       <Motion
-        v-for="(project, index) in projects"
+        v-for="(project, index) in visibleProjects"
         :key="project.title"
         :initial="{ opacity: 0, transform: 'translateY(10px)' }"
         :while-in-view="{ opacity: 1, transform: 'translateY(0)' }"
