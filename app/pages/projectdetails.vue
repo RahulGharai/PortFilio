@@ -321,7 +321,7 @@ const allData = ref<any>([
     key: "authenticator",
     title: "Authenticator",
     details:
-      "Track your daily expenses, categorize spending and manage budgets easily.",
+      "The system supports various login types, each with its own authentication process.",
     images: authenticator,
     accordionItems: [
       {
@@ -361,7 +361,7 @@ const allData = ref<any>([
   label: "Try the Live App",
   content: `
     This project demonstrates multiple authentication systems in one place. <br/><br/>
-    <a href="#" target="_blank">Live app link (add your URL here)</a> <br/><br/>
+    <a href="https://authenticator-e865b.web.app/" target="_blank">https://authenticator-e865b.web.app</a> <br/><br/>
 
     You can test login using Email/Password or try Google, GitHub, or Twitter login. <br/><br/>
 
@@ -417,8 +417,8 @@ const allData = ref<any>([
   content: `
     You can try the live demo using the credentials below. <br/><br/>
 
-    <a href="https://messageapplication-cd906.web.app" target="_blank">
-      Live App Link
+    <a href="https://connectme-ec6b5.web.app/" target="_blank">
+      https://connectme-ec6b5.web.app/
     </a> <br/><br/>
 
     Demo Login <br/>

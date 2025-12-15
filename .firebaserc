@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "portfoliogharairahul"
+  },
+  "targets": {
+    "portfoliogharairahul": {
+      "hosting": {
+        "portfolio-gharairahul.web.app": [
+          "portfolio-gharairahul"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

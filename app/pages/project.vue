@@ -33,7 +33,7 @@ onMounted(async () => {
 const allProjects = [
   {
     key: "AdminDashboard",
-    title: "Admin Dashboard",
+    title: "Admin Dashboard (Not complete yet)",
     description:
       "A feature-rich admin dashboard for managing user data, viewing stock info, sending emails, and enabling chat between logged-in users. It includes an image gallery with likes and comments, Firebase authentication, and Firestore-based data handling.",
     image: Object.values(

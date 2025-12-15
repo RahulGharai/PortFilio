@@ -3,7 +3,7 @@ import { getFirestore } from "firebase/firestore";
 
 export default defineNuxtPlugin(() => {
   const firebaseConfig = {
-    apiKey: "AIzaSyBxOtJ_2Gd3TjIprqMJpMXEIB5Vc8wv3Ls",
+    apiKey: "AIzaSyBxOtJ_2Gd3TjIprqMJpMXEIB5Vc8wv3L",
     authDomain: "portfoliogharairahul.firebaseapp.com",
     projectId: "portfoliogharairahul",
     storageBucket: "portfoliogharairahul.firebasestorage.app",

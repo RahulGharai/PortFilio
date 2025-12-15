@@ -14,7 +14,7 @@ const items: NavigationMenuItem[] = [
   },
   {
     label: 'Releases',
-    to: 'https://github.com/nuxt/ui/releases',
+    to: 'https://github.com/RahulGharai/PortFilio',
     target: '_blank'
   }
 ]
@@ -29,7 +29,7 @@ const items: NavigationMenuItem[] = [
     <!-- <UNavigationMenu :items="items" variant="link" /> -->
 
     <template #right>
-      <UButton
+      <!-- <UButton
         icon="i-simple-icons-discord"
         color="neutral"
         variant="ghost"
@@ -44,12 +44,12 @@ const items: NavigationMenuItem[] = [
         to="https://go.nuxt.com/x"
         target="_blank"
         aria-label="X"
-      />
+      /> -->
       <UButton
         icon="i-simple-icons-github"
         color="neutral"
         variant="ghost"
-        to="https://github.com/nuxt/nuxt"
+        to="https://github.com/RahulGharai/PortFilio"
         target="_blank"
         aria-label="GitHub"
       />

@@ -147,17 +147,17 @@
 import type { TimelineItem } from "@nuxt/ui";
 import { TemplateGenerativeModel } from "firebase/ai";
 
-const items = [
-  "https://picsum.photos/468/468?random=1",
-  "https://picsum.photos/468/468?random=2",
-  "https://picsum.photos/468/468?random=3",
-  "https://picsum.photos/468/468?random=4",
-  "https://picsum.photos/468/468?random=5",
-  "https://picsum.photos/468/468?random=6",
-];
+// const items = [
+//   "https://picsum.photos/468/468?random=1",
+//   "https://picsum.photos/468/468?random=2",
+//   "https://picsum.photos/468/468?random=3",
+//   "https://picsum.photos/468/468?random=4",
+//   "https://picsum.photos/468/468?random=5",
+//   "https://picsum.photos/468/468?random=6",
+// ];
 
-const HomeImages = Object.values(
-  import.meta.glob("~/assets/images/mydesk/*", {
+const items = Object.values(
+  import.meta.glob("~/assets/images/common/*", {
     eager: true,
     import: "default",
   })
