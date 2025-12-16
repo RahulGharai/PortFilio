@@ -8,7 +8,7 @@
       <br />
     </div>
     <div class="flex items-center justify-center text-4xl">
-      <div>Full Stack Developer</div>
+      <div>Full Stack Developer.</div>
     </div>
     <!-- <div class="flex items-center justify-center p-5">
       I craft intuitive digital experiences where design meets functionality.
